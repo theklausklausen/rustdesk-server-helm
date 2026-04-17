@@ -22,6 +22,9 @@ metadata:
   {{- end }}
 spec:
   type: {{ .Values.portConfigs.hbbs.type }}
+  {{- if and .Values.service.externalTrafficPolicy (or (eq .Values.portConfigs.hbbs.type "NodePort") (eq .Values.portConfigs.hbbs.type "LoadBalancer")) }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
+  {{- end }}
   ports:
     - name: "hbbs-nat-port"
       port: {{ .Values.portConfigs.hbbs.natPort.port }}

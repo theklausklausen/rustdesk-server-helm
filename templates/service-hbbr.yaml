@@ -22,6 +22,9 @@ metadata:
   {{- end }}
 spec:
   type: {{ .Values.portConfigs.hbbr.type }}
+  {{- if and .Values.service.externalTrafficPolicy (or (eq .Values.portConfigs.hbbr.type "NodePort") (eq .Values.portConfigs.hbbr.type "LoadBalancer")) }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
+  {{- end }}
   ports:
     - name: "hbbr-relay-port"
       targetPort: {{ .Values.portConfigs.hbbr.replayPort.targetPort }}

@@ -30,6 +30,11 @@ podLabels: {}
 
 # Service configurations
 service:
+  # External traffic policy for both services (hbbs and hbbr)
+  # Options: Local, Cluster
+  # Local preserves client source IP and avoids second hop, but requires healthy local endpoints
+  externalTrafficPolicy: Local
+  
   # Annotations to add to both services (hbbs and hbbr)
   annotations: {}
     # Example annotations:
