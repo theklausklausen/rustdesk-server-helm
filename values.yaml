@@ -28,6 +28,11 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
+# Use host network for pods
+# When enabled, pods will use the host's network namespace
+# This is useful for RustDesk server to preserve client IP addresses
+hostNetwork: true
+
 # Service configurations
 service:
   # External traffic policy for both services (hbbs and hbbr)
