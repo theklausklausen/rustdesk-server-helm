@@ -31,7 +31,7 @@ podLabels: {}
 # Use host network for pods
 # When enabled, pods will use the host's network namespace
 # This is useful for RustDesk server to preserve client IP addresses
-hostNetwork: true
+hostNetwork: false
 
 # Service configurations
 service:
@@ -39,6 +39,10 @@ service:
   # Options: Local, Cluster
   # Local preserves client source IP and avoids second hop, but requires healthy local endpoints
   externalTrafficPolicy: Local
+  
+  # LoadBalancer IP for services (only used when service type is LoadBalancer)
+  # Leave empty to auto-assign
+  loadBalancerIP: ""
   
   # Annotations to add to both services (hbbs and hbbr)
   annotations: {}
