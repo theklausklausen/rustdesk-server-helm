@@ -4,6 +4,22 @@ metadata:
   name: rustdesk-hbbs-service
   labels:
     {{- include "rustdesk-server.labels" . | nindent 4 }}
+    {{- with .Values.service.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    {{- with .Values.service.hbbs.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.service.hbbs.annotations }}
+  {{- if not $.Values.service.annotations }}
+  annotations:
+  {{- end }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.portConfigs.hbbs.type }}
   ports:

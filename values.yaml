@@ -28,6 +28,36 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
+# Service configurations
+service:
+  # Annotations to add to both services (hbbs and hbbr)
+  annotations: {}
+    # Example annotations:
+    # service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    # prometheus.io/scrape: "true"
+  # Labels to add to both services (hbbs and hbbr)
+  labels: {}
+    # Example labels:
+    # team: infrastructure
+    # environment: production
+  
+  # Service-specific annotations and labels
+  hbbs:
+    # Annotations specific to hbbs service
+    annotations: {}
+      # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+    # Labels specific to hbbs service
+    labels: {}
+      # component: signal-server
+  
+  hbbr:
+    # Annotations specific to hbbr service
+    annotations: {}
+      # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+    # Labels specific to hbbr service
+    labels: {}
+      # component: relay-server
+
 podSecurityContext: {}
   # fsGroup: 2000
 
