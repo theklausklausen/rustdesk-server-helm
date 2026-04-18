@@ -111,6 +111,10 @@ spec:
           args:
             - -k
             - _
+            {{- if .Values.rustdesk.relayServer }}
+            - -r
+            - {{ .Values.rustdesk.relayServer }}
+            {{- end }}
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
